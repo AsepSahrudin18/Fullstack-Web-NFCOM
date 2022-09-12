@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tugas1 Javascript - Asep Sahrudin</title>
+  </head>
+  <body>
+    <!-- Diketahui:
+    pegawai: Ridwan
+    jabatan: manager
+    status: menikah
+    Tugas:
+    Cetak Data Pegawai berbentuk tabel:
+    Judul Kolom gunakan thead
+    Data2 gunakan tbody
+    Nama Pegawai, Jabatan, Status,
+    Gaji Pokok(if): Manager=>15 jt, Asisten Manager=>10 jt, Staff=>5 jt
+    Tunjangan Jabatan: 15% dari gapok
+    BPJS: 10% dari gapok
+    
+    Tunjangan Keluarga (ternary): dilihat dari status yg sudah menikah =>20% dari gapok
+    Total Gaji: jumlahlahkan seluruh element gaji (gunakan tfoot)
+    Format pengumpulan tugas:
+    Disimpan di githubnya masing2:
+    contoh:
+    buat repo baru (javascript) -> file tugas di push di repo tsb
+    lalu linknya di assign ke LMS -->
+
+    <script language="javascript">
+      let namaPegawai = "Ridwan";
+      let jabatan = "Manager";
+      let status = "Menikah";
+      let gapok = 0;
+
+      if (jabatan == "Manager") {
+        gapok = 15000000;
+      } else if (jabatan == "Asisten Manager") {
+        gapok = 10000000;
+      } else if (jabatan == "staff") {
+        gapok = 5000000;
+      } else {
+        gapok = 0;
+      }
+
+      let tJabatan = 0.15 * gapok;
+      let BPJS = 0.1 * gapok;
+      //   let tKeluarga = 0;
+
+      //   if (status == "Menikah") {
+      //     let nilai = 0.2;
+      //     tKeluarga = nilai * gapok;
+      //   } else {
+      //     tKeluarga = 0;
+      //   }
+
+      let nilai = 0.2;
+      const tKeluarga = status == "Menikah" ? 0.2 * gapok : 0;
+
+      let bruto = gapok + tJabatan + BPJS + tKeluarga;
+
+      //   document.write("Tunjangan Keluarga = ", tKeluarga);
+      //   document.write("Gaji Pokok", gapok);
+      //   document.write("Tunjangan Jabatan", tJabatan);
+      //   document.write("Total Gaji = ", bruto);
+
+      document.write(
+        `<h1>Data Gaji Pegawai</h1> </br> Nama: ${namaPegawai} </br> Jabatan: ${jabatan} </br> Status: ${status} </br>`
+      );
+
+      document.write(`<table border="1" align="left" cellspacing="0" cellpadding="12">
+      <thead>
+        <tr bgcolor="#F3950D" style="color: #ffff;">
+          <th colspan="5">Table Gaji Pegawai</th>
+        </tr>
+        <tr>
+          <th>Nama Pegawai</th>
+          <th>Jabatan</th>
+          <th>Status</th>
+          <th>Data Gaji</th>
+          <th>Keterangan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="4">Ridwan</td>
+          <td rowspan="4">${jabatan}</td>
+          <td rowspan="4">${status}</td>
+          <td>Gaji Pokok</td>
+          <td>Rp.${gapok}</td>
+        </tr>
+        <tr>
+          <td>Tunjangan Jabatan</td>
+          <td>Rp.${tJabatan}</td>
+        </tr>
+        <tr>
+          <td>BPJS</td>
+          <td>Rp.${BPJS}</td>
+        </tr>
+        <tr>
+          <td>Tunjangan Keluarga</td>
+          <td>Rp.${tKeluarga}</td>
+        </tr>
+      </tbody>
+      <tfoot bgcolor="#73777B">
+        <th colspan="4">Total</th>
+        <th>Rp.${bruto}</th>
+      </tfoot>
+    </table>`);
+    </script>
+  </body>
+</html>
